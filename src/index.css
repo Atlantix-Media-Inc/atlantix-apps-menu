@@ -1,24 +1,16 @@
 :root {
   color-scheme: light dark;
   background-color: #ffffff;
+  --background: #000;
+  --icon-color: #344955;
+  --width: 60px;
+  --height: 60px;
+  --border-radius: 100%;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    background-color: #16171d;
-  }
-}
-
-body {
-  margin: 0;
+.container {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-width: 320px;
-  min-height: 100svh;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
+  height: 100vh;
 }
