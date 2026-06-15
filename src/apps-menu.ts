@@ -41,7 +41,7 @@ export class AtxAppsMenu extends LitElement {
       {
         name: 'Bucket App',
         icon: bucketLogo,
-        url: 'https://atlantix-apps.vercel.app/bucket',
+        url: 'https://atlantix-apps.vercel.app/bucket-app',
         width: 40,
       },
       {
@@ -79,22 +79,21 @@ export class AtxAppsMenu extends LitElement {
   static styles = css`
 
 .wrapper {
-  width: var(--width);
-  height: var(--height);
+  width: 60px;
+  height: 60px;
   position: relative;
-  border-radius: var(--border-radius);
+  border-radius: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 6rem;
   
   .fab {
-    background: var(--background);
-    width: var(--width);
-    height: var(--height);
+    background: #000;
+    width: 60px;
+    height: 60px;
     position: relative;
     z-index: 3;
-    border-radius: var(--border-radius);
+    border-radius: 100%;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
     display: flex;
     justify-content: center;
@@ -154,7 +153,7 @@ export class AtxAppsMenu extends LitElement {
     }*/
     
     a {
-      color: var(--icon-color);
+      color: #344955;
       opacity: 0.8;
       
       &:hover {
@@ -168,7 +167,7 @@ export class AtxAppsMenu extends LitElement {
   input {
     height: 100%;
     width: 100%;
-    border-radius: var(--border-radius);
+    border-radius: 100%;
     cursor: pointer;
     position: absolute;
     z-index: 5;
@@ -181,9 +180,9 @@ export class AtxAppsMenu extends LitElement {
       
       ~ .fac {
         width: 32px;
-        height: 295px;
+        height: 307px;
         animation: fac-animation 0.4s ease-out forwards 0.1s;
-        top: -320px;
+        top: -340px;
         opacity: 1;
         visibility: visible;
       }
@@ -244,7 +243,6 @@ export class AtxAppsMenu extends LitElement {
 
   `;
 }
-
 
 declare global {
   interface HTMLElementTagNameMap {

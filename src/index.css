@@ -1,13 +1,3 @@
-:root {
-  color-scheme: light dark;
-  background-color: #ffffff;
-  --background: #000;
-  --icon-color: #344955;
-  --width: 60px;
-  --height: 60px;
-  --border-radius: 100%;
-}
-
 .container {
   display: flex;
   justify-content: center;
