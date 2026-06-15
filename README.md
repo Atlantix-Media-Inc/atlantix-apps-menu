@@ -2,7 +2,7 @@
 Web component to display a standard menu for all internal apps.
 
 ### Preview 📺
-![preview](./component-preview.gif)
+![preview](./assets/component-preview.gif)
 
 ### About 🧑‍💻
 This repository is maintained by everyone at Atlantix Media Inc.
