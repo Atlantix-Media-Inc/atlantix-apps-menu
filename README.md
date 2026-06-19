@@ -2,7 +2,8 @@
 Web component to display a standard menu for all internal apps.
 
 ### Preview 📺
-![preview](./assets/component-preview.gif)
+![closed](./assets/closed.png)
+![opened](./assets/open.png)
 
 ### Implementation 💉
 1. Install dependencies
