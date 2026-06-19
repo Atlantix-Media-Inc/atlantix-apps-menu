@@ -2,11 +2,6 @@ import { LitElement, css, html } from 'lit';
 import { customElement } from 'lit/decorators.js';
 
 import atxLogo from './assets/atx-logo.png';
-import smsLogo from './assets/sms-small.svg';
-import linkShortenerLogo from './assets/link-small.svg';
-import frankeyLogo from './assets/frankey-small.svg';
-import bucketLogo from './assets/bucket-small.svg';
-import moneyManLogo from './assets/money-man.svg';
 import homeLogo from './assets/house.svg';
 
 /**
@@ -22,39 +17,45 @@ export class AtxAppsMenu extends LitElement {
     apps: [
       {
         name: 'SMS',
-        icon: smsLogo,
         url: 'https://atlantix-apps.vercel.app/sms',
         width: 40,
+        tint: "lime",
+        mark: "SMS"
       },
       {
         name: 'Link Shortener',
-        icon: linkShortenerLogo,
         url: 'https://atlantix-apps.vercel.app/link-shortner',
         width: 30,
+        tint: "sky",
+        mark: "LKS",
       },
       {
         name: 'Frankeynalytics',
-        icon: frankeyLogo,
         url: 'https://atlantix-apps.vercel.app/frankey',
         width: 40,
+        tint: "blue",
+        mark: "FRK"
       },
       {
         name: 'Bucket App',
-        icon: bucketLogo,
         url: 'https://atlantix-apps.vercel.app/bucket-app',
         width: 40,
+        tint: "neutral",
+        mark: "BKT"
       },
       {
         name: 'Money Man',
-        icon: moneyManLogo,
         url: 'https://atlantix-apps.vercel.app/money-man',
         width: 40,
+        tint: "amber",
+        mark: "MM"
       },
       {
         name: 'Home',
         icon: homeLogo,
         url: 'https://atlantix-apps.vercel.app',
         width: 40,
+        tint: "neutral",
       }
     ]
   }
@@ -68,16 +69,15 @@ export class AtxAppsMenu extends LitElement {
         <img src=${atxLogo} alt="ATX Logo" width="50" height="50" />
       </div>
       <div class="fac">
-        ${apps.map(app => html`<a title=${app.name} href=${app.url}>
-          <img src=${app.icon} alt=${app.name} width=${app.width} height=${app.width} />
+        ${apps.map(app => html`<a title=${app.name} class=${app.tint} href=${app.url}>
+          ${app.icon ? html`<img src=${app.icon} alt=${app.name} width="30" height="30" />` : app.mark}
         </a>`)}
       </div>
     </div>
     `;
   }
-  
-  static styles = css`
 
+  static styles = css`
 .wrapper {
   width: 60px;
   height: 60px;
@@ -86,14 +86,14 @@ export class AtxAppsMenu extends LitElement {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: "Geist", sans-serif;
   
   .fab {
-    background: #000;
     width: 60px;
     height: 60px;
     position: relative;
     z-index: 3;
-    border-radius: 100%;
+    border-radius: 15px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
     display: flex;
     justify-content: center;
@@ -122,7 +122,7 @@ export class AtxAppsMenu extends LitElement {
   
   .fac {
     height: 285px;
-    border-radius: 64px;
+    border-radius: 15px;
     position: absolute;
     background: #fff;
     z-index: 2;
@@ -153,9 +153,42 @@ export class AtxAppsMenu extends LitElement {
     }*/
     
     a {
-      color: #344955;
       opacity: 0.8;
+      width: 45px;
+      height: 200px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
       
+      &.lime {
+        background-color: #82CE0026;
+        color: #3F6212;
+      }
+
+      &.sky {
+        background-color: #00A4F126;
+        color: #005A89;
+      }
+      
+      &.blue {
+        background-color: #267FFF26;
+        color: #193CB8;
+      }
+        
+      &.neutral {
+        background-color: #73737326;
+        color: #262626;
+      }
+
+      &.amber {
+        background-color: #FB9C0026;
+        color: #973C00;
+      }
+
       &:hover {
         transition: 0.2s;
         opacity: 1;
