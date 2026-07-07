@@ -51,6 +51,13 @@ export class AtxAppsMenu extends LitElement {
         mark: "MM"
       },
       {
+        name: 'Ping Sync',
+        url: 'https://atlantix-apps.vercel.app/ping-sync',
+        width: 40,
+        tint: "red",
+        mark: "PS"
+      },
+      {
         name: 'Home',
         icon: homeLogo,
         url: 'https://atlantix-apps.vercel.app',
@@ -187,6 +194,11 @@ export class AtxAppsMenu extends LitElement {
       &.amber {
         background-color: #FB9C0026;
         color: #973C00;
+      }
+
+      &.red {
+        background-color: #FEE0E1;
+        color: #9F0712;
       }
 
       &:hover {
