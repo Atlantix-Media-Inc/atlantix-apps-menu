@@ -106,6 +106,7 @@ export class AtxAppsMenu extends LitElement {
     justify-content: center;
     align-items: center;
     animation: fab-animation-reverse 0.4s ease-out forwards;
+    background-color: #FFF;
     
     &::before,
     &::after {
