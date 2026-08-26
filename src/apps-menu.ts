@@ -14,46 +14,48 @@ import logOutLogo from './assets/log-out.svg';
 @customElement('atx-apps-menu')
 export class AtxAppsMenu extends LitElement {
 
+  _baseUrl = 'https://atlantix-apps.vercel.app';
+
   _configuration = {
     apps: [
       {
         name: 'SMS',
-        url: 'https://atlantix-apps.vercel.app/sms',
+        url: `${this._baseUrl}/sms`,
         width: 40,
         tint: "lime",
         mark: "SMS"
       },
       {
         name: 'Link Shortener',
-        url: 'https://atlantix-apps.vercel.app/link-shortner',
+        url: `${this._baseUrl}/link-shortner`,
         width: 30,
         tint: "sky",
         mark: "LKS",
       },
       {
         name: 'Frankeynalytics',
-        url: 'https://atlantix-apps.vercel.app/frankey',
+        url: `${this._baseUrl}/frankey`,
         width: 40,
         tint: "blue",
         mark: "FRK"
       },
       {
         name: 'Bucket App',
-        url: 'https://atlantix-apps.vercel.app/bucket-app',
+        url: `${this._baseUrl}/bucket-app`,
         width: 40,
         tint: "neutral",
         mark: "BKT"
       },
       {
         name: 'Money Man',
-        url: 'https://atlantix-apps.vercel.app/money-man',
+        url: `${this._baseUrl}/money-man`,
         width: 40,
         tint: "amber",
         mark: "MM"
       },
       {
         name: 'Ping Sync',
-        url: 'https://atlantix-apps.vercel.app/ping-sync',
+        url: `${this._baseUrl}/ping-sync`,
         width: 40,
         tint: "red",
         mark: "PS"
@@ -61,7 +63,7 @@ export class AtxAppsMenu extends LitElement {
       {
         name: 'Home',
         icon: homeLogo,
-        url: 'https://atlantix-apps.vercel.app',
+        url: this._baseUrl,
         width: 40,
         tint: "neutral",
       }
@@ -70,7 +72,7 @@ export class AtxAppsMenu extends LitElement {
       {
         name: 'logout',
         icon: logOutLogo,
-        url: 'https://atlantix-apps.vercel.app/logout',
+        url: `${this._baseUrl}/logout`,
         tint: "red",
       }
     ]
