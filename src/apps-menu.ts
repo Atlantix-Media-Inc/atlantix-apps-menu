@@ -3,6 +3,7 @@ import { customElement } from 'lit/decorators.js';
 
 import atxLogo from './assets/atx-logo.png';
 import homeLogo from './assets/house.svg';
+import logOutLogo from './assets/log-out.svg';
 
 /**
  * An example element.
@@ -64,11 +65,19 @@ export class AtxAppsMenu extends LitElement {
         width: 40,
         tint: "neutral",
       }
+    ],
+    extras: [
+      {
+        name: 'logout',
+        icon: logOutLogo,
+        url: 'https://atlantix-apps.vercel.app/logout',
+        tint: "red",
+      }
     ]
   }
 
   render() {
-    const { apps } = this._configuration;
+    const { apps, extras } = this._configuration;
     return html`
     <div class="wrapper">
       <input type="checkbox" />
@@ -79,6 +88,13 @@ export class AtxAppsMenu extends LitElement {
         ${apps.map(app => html`<a title=${app.name} class=${app.tint} href=${app.url}>
           ${app.icon ? html`<img src=${app.icon} alt=${app.name} width="30" height="30" />` : app.mark}
         </a>`)}
+      </div>
+      <div class="extra">
+        ${extras.map(extra => html`
+          <a title=${extra.name} href=${extra.url} class="out">
+            <img src=${extra.icon} alt=${extra.name} width="30" height="30" />
+          </a>
+        `)}
       </div>
     </div>
     `;
@@ -125,6 +141,27 @@ export class AtxAppsMenu extends LitElement {
     &::after {
       width: 18px;
       height: 4px;
+    }
+  }
+
+  .extra {
+    position: absolute;
+    background: transparent;
+    left: 78px;
+    z-index: 2;
+    transition: opacity 0.2s ease-in, top 0.2s ease-in, width 0.1s ease-in;
+    opacity: 0;
+    visibility: hidden;
+    
+    a {
+      border-radius: 15px;
+      display: flex;
+      padding: 0.7rem 0.9rem;
+      opacity: 0.8;
+
+      &.out {
+        background-color: #f66466;
+      }
     }
   }
   
@@ -232,6 +269,12 @@ export class AtxAppsMenu extends LitElement {
         opacity: 1;
         visibility: visible;
       }
+
+      ~ .extra {
+        opacity: 1;
+        visibility: visible;
+        animation: extra-animation 0.2s ease-out forwards 0.1s;
+      }
     }
   }
 }
@@ -281,6 +324,21 @@ export class AtxAppsMenu extends LitElement {
   }
   66% {
     transform: scale(1.05, 0.95);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+@keyframes extra-animation {
+  0% {
+    transform: scale(1, 1);
+  }
+  33% {
+    transform: translateX(1px);
+  }
+  66% {
+    transform: translateX(2px);
   }
   100% {
     transform: scale(1, 1);
