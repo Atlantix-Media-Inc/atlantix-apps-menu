@@ -1,0 +1,35 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 24
+    commands:
+      - echo "Installing dependencies with legacy peer deps"
+      - npm ci --legacy-peer-deps
+
+  pre_build:
+    commands:
+      - PACKAGE_VERSION=$(node -p "require('./package.json').version")
+      - echo "Starting build for bundle for version $PACKAGE_VERSION"
+
+  build:
+    commands:
+      - echo "Building bundle for version $PACKAGE_VERSION"
+      - npm run build
+      - echo "Built bundle for version $PACKAGE_VERSION"
+
+  post_build:
+    commands:
+      - 'echo "Deploying to S3 : $S3_BUCKET_NAME, with version $PACKAGE_VERSION"'
+      - aws s3 sync dist/ s3://$S3_BUCKET_NAME/v/$PACKAGE_VERSION/ --delete
+      - aws s3 sync dist/ s3://$S3_BUCKET_NAME/ --exclude "v/*" --delete
+      - 'echo "deployed to S3 : $S3_BUCKET_NAME, with version $PACKAGE_VERSION"'
+      - 'echo "Invalidating CloudFront CDN cache : $CLOUDFRONT_DISTRIBUTION_ID"'
+      - aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_DISTRIBUTION_ID --paths "/*"
+      - 'echo "invalidated CloudFront CDN cache : $CLOUDFRONT_DISTRIBUTION_ID"'
+
+artifacts:
+  files:
+    - '**/*'
+  base-directory: 'dist'
