@@ -2,8 +2,7 @@ import { LitElement, css, html } from 'lit';
 import { customElement } from 'lit/decorators.js';
 
 import atxLogo from './assets/atx-logo.png';
-import homeLogo from './assets/house.svg';
-import logOutLogo from './assets/log-out.svg';
+
 
 /**
  * An example element.
@@ -62,18 +61,16 @@ export class AtxAppsMenu extends LitElement {
       },
       {
         name: 'Home',
-        icon: homeLogo,
         url: this._baseUrl,
         width: 40,
-        tint: "neutral",
+        tint: "neutral home",
       }
     ],
     extras: [
       {
         name: 'logout',
-        icon: logOutLogo,
         url: `${this._baseUrl}/logout`,
-        tint: "red",
+        tint: "out logout",
       }
     ]
   }
@@ -88,13 +85,12 @@ export class AtxAppsMenu extends LitElement {
       </div>
       <div class="fac">
         ${apps.map(app => html`<a title=${app.name} class=${app.tint} href=${app.url}>
-          ${app.icon ? html`<img src=${app.icon} alt=${app.name} width="30" height="30" />` : app.mark}
+          ${app.mark ? html`${app.mark}` : ''}
         </a>`)}
       </div>
       <div class="extra">
         ${extras.map(extra => html`
-          <a title=${extra.name} href=${extra.url} class="out">
-            <img src=${extra.icon} alt=${extra.name} width="30" height="30" />
+          <a title=${extra.name} href=${extra.url} class=${extra.tint}>
           </a>
         `)}
       </div>
@@ -164,6 +160,19 @@ export class AtxAppsMenu extends LitElement {
       &.out {
         background-color: #f66466;
       }
+
+      &.logout::before {
+        content: '';
+        color: black;
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        background-size: contain;
+        background-color: white;
+        background-repeat: no-repeat;
+        -webkit-mask-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWxvZy1vdXQgcHJldmlldy1pY29uIj48cGF0aCBkPSJtMTYgMTcgNS01LTUtNSIvPjxwYXRoIGQ9Ik0yMSAxMkg5Ii8+PHBhdGggZD0iTTkgMjFINWEyIDIgMCAwIDEtMi0yVjVhMiAyIDAgMCAxIDItMmg0Ii8+PC9zdmc+");
+        mask-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWxvZy1vdXQgcHJldmlldy1pY29uIj48cGF0aCBkPSJtMTYgMTcgNS01LTUtNSIvPjxwYXRoIGQ9Ik0yMSAxMkg5Ii8+PHBhdGggZD0iTTkgMjFINWEyIDIgMCAwIDEtMi0yVjVhMiAyIDAgMCAxIDItMmg0Ii8+PC9zdmc+");
+      }
     }
   }
   
@@ -229,6 +238,19 @@ export class AtxAppsMenu extends LitElement {
       &.neutral {
         background-color: #73737326;
         color: #262626;
+      }
+
+      &.home::before {
+        content: '';
+        color: black;
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        background-size: contain;
+        background-color: black;
+        background-repeat: no-repeat;
+        -webkit-mask-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWhvdXNlIHByZXZpZXctaWNvbiI+PHBhdGggZD0iTTE1IDIxdi04YTEgMSAwIDAgMC0xLTFoLTRhMSAxIDAgMCAwLTEgMXY4Ii8+PHBhdGggZD0iTTMgMTBhMiAyIDAgMCAxIC43MDktMS41MjhsNy02YTIgMiAwIDAgMSAyLjU4MiAwbDcgNkEyIDIgMCAwIDEgMjEgMTB2OWEyIDIgMCAwIDEtMiAySDVhMiAyIDAgMCAxLTItMnoiLz48L3N2Zz4=");
+        mask-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWhvdXNlIHByZXZpZXctaWNvbiI+PHBhdGggZD0iTTE1IDIxdi04YTEgMSAwIDAgMC0xLTFoLTRhMSAxIDAgMCAwLTEgMXY4Ii8+PHBhdGggZD0iTTMgMTBhMiAyIDAgMCAxIC43MDktMS41MjhsNy02YTIgMiAwIDAgMSAyLjU4MiAwbDcgNkEyIDIgMCAwIDEgMjEgMTB2OWEyIDIgMCAwIDEtMiAySDVhMiAyIDAgMCAxLTItMnoiLz48L3N2Zz4=");
       }
 
       &.amber {

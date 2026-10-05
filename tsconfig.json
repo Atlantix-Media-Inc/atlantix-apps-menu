@@ -1,10 +1,10 @@
 {
   "compilerOptions": {
-    "target": "es2023",
+    "target": "ES2022",
     "experimentalDecorators": true,
     "useDefineForClassFields": false,
-    "module": "NodeNext",
-    "lib": ["ES2023", "DOM"],
+    "module": "ESNext",
+    "lib": ["es2022", "dom", "dom.iterable"],
     "types": ["vite/client"],
     "skipLibCheck": true,
 
@@ -19,7 +19,7 @@
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
-    "moduleResolution": "NodeNext",
+    "moduleResolution": "node",
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,
